@@ -1,0 +1,4 @@
+
+     [trytond.modules]
+     taller = trytond.modules.taller
+     

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<tree>
+    <!-- label muestra la etiqueta-->
+    <!-- field muestra el input-->
+    <field name="name"/> <!--name es el nombre del campo en taller.py-->
+    <field name="modelos"/>
+</tree>

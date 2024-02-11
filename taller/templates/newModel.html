@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Registrar Nuevo Coche {% endblock %}
+{% block content %}
+    {% block title2 %} Por favor, Rellena el formulario{% endblock %}
+    <form action="" method="POST">
+        <br>
+        <h3>
+            <label>Marca: </label>{{mi_marcas.name}}
+        </h3>
+        <h3>
+            <label>Modelo: </label>
+            <input type="text" name="modelo" value="" required/>
+        </h3>
+        <h3>
+            <label>Combustible: </label>
+            <select class="" name="combustible" required>
+                {% for clave, valor in mi_combustible %}
+                <option value="{{clave}}">{{valor}}</option>
+                {% endfor %}
+            </select>
+
+        </h3>
+        <input type="submit" value="Enviar"/>
+    </form>
+    <br>
+    <br>
+{% endblock %}
+<br>
+<br>
+{% block navegador %}
+    <a href="{{url_for('lista_coches')}}">
+        <button type="button" name="button">Volver</button>
+    </a>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

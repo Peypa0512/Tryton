@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Compra Nuevo Vehiculo {% endblock %}
+{% block content %}
+
+    <h3>{{modelo.marca.name}}</h3>
+    <h3>{{modelo.modelo}}</h3>
+    <form action="" method="POST">
+        <label>Propietario</label>
+        <select class="" name="terceros" required>
+            {% for terceros in tercero %}
+            <option value="{{terceros.id}}">{{terceros.rec_name}}</option>
+            {% endfor %}
+        </select>
+
+        <label>Matricula</label>
+        <input type="text" name="matricula" placeholder="Matricula" required/>
+        <input type="submit" value="Enviar"/>
+    </form>
+
+{% endblock %}

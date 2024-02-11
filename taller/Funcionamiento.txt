@@ -1,0 +1,27 @@
+Para entorno virtual:
+
+    source venv/bin/activate
+
+Archivo configuración trytond.conf
+
+Comandos funcionamiento Tryton
+
+      Actualización modelos app.py:
+
+        - pip install -e .
+
+      Creación base de datos postgresql dentro de entorno virtual:
+
+        - createdb nombre_base de datos
+
+      Actualización base de datos:
+
+        trytond-admin -c (ruta donde se encuentre el fichero trytond.conf) -d (nombre bbdd) --all -vv
+
+      Actualización de modulos (vistas):
+
+        trytond-admin -c (ruta donde se encuentre el fichero trytond.conf) -d (nombre bbdd) -u (nombre carpeta) --activate-dependencies -vv
+
+      Para ejecutar tryton:
+
+        trytond -c (ruta donde se encuentre el fichero trytond.conf) -d (nombre bbdd) --dev -vv

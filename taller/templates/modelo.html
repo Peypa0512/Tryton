@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title%}Modelos{% endblock %}
+
+{% block content %}
+    {% block title2 %}<h1>Listado de Modelos de {{mi_marcas.name}}</h1> {% endblock %}
+    <br>
+    <a href="{{url_for('add_modelo', marca=mi_marcas.id)}}">
+        <button type="button" name="button">Registrar nuevo Modelo</button>
+    </a>
+    <br>
+    <h2>Estos son los modelos</h2>
+    {% for modelos in mi_modelo %}
+        <a href="{{url_for('compra_coche', modelo=modelos.id)}}">
+        <h3> Modelo de la Marca: {{modelos.rec_name}}</h3>
+        </a>
+    {% endfor %}
+    <form action ="" method="POST">
+        <table>
+            <tr>
+                <th>Seleccionar</th>
+                <th>Matricula</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Precio</th>
+                <th>Fecha Matriculacion</th>
+                <th>Fecha de Baja</th>
+            </tr>
+            <tbody>
+                <tr>
+                {% for coche in mi_coche%}
+                    <td><input type="checkbox" name="checkbox" value="{{ coche.id }}"></td>
+                    <td>{{coche.matricula}} </td>
+                    <td>{{coche.marca.rec_name}}</td>
+                    <td>{{coche.modelo.rec_name}}</td>
+                    <td>{{coche.precio}} </td>
+                    <td>{{coche.fecha_matriculacion}} </td>
+                    <td>{{coche.fecha_baja}} </td>
+                    <!--<td style="visibility:collapse; display:none;">{{coche.id}}</td> -->
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+
+         <button type="submit" name="button">Seleccionar</button>
+    </form>
+    {% endblock %}
+
+{% block navegador %}
+<br>
+<br>
+<a href="{{url_for('lista_coches',)}}">
+    <button type="button" name="button">Volver</button>
+</a>
+
+<!-- <script>
+    function selectRow(checkbox){
+        if(checkbox.checked){
+            var rowData = checkbox.parentNode.parentNode.textContent.trim();
+            fetch('/seleccionar',{
+                method: 'POST',
+                headers:{
+                        'Content-Type' : 'application/json'
+                        },
+                body: JSON.stringify({ data: rowData })
+                })
+                .then(response => {
+                                    window.location.href='/exportar_excel.html';
+                )};
+        }
+    }
+</script> -->
+<script>
+    var valoresSeleccionados = [];
+
+    // Iterar sobre los checkboxes seleccionados y obtener sus valores
+    for (var i = 0; i < checkboxes.length; i++) {
+      var valor = checkboxes[i].value;
+      valoresSeleccionados.push(valor);
+    }
+
+    // Realizar las acciones necesarias con los valores seleccionados
+    // Por ejemplo, enviar los valores al servidor o realizar alguna operación en el cliente
+
+    // Ejemplo de cómo enviar los valores al servidor utilizando AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/seleccionar', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(valoresSeleccionados));
+</script>
+
+{% endblock%}

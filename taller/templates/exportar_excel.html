@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registros Seleccionados</title>
+</head>
+<body>
+    <h1>Registros Seleccionados</h1>
+    {{registros}}, hola
+    <table>
+        <tr>
+            <th>Matricula</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Precio</th>
+
+
+
+        </tr>
+
+        {% for dato in datos %}
+
+        <tr>
+
+            <td>{{dato.matricula}}</td>
+            <td>{{dato.marca}}</td>
+            <td>{{dato.modelo}}</td>
+            <td>{{dato.precio}}</td>
+
+
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

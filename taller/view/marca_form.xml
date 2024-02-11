@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<form>
+    <!-- label muestra la etiqueta-->
+    <!-- field muestra el input-->
+    <label name="name"/> <!-- ocupa 1 columna-->
+    <!--name es el nombre del campo en taller.py-->
+    <field name="name" colspan="3"/> <!--para que ocupe to_do o sea 4 columns-->
+    <field name="modelos" colspan="4"/>
+</form>

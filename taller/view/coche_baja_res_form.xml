@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<form>
+    <label id="coche_baja" string="Se han dado de baja"/>
+    <field name="baja_coches"/>
+    <label id="coche_baja_2" string="coches" xalign="1" xexpand="0"/>
+</form>

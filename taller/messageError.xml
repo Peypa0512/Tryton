@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<tryton>
+    <data>
+        <record model="ir.message" id="msg_coche_matricula_unique">
+            <field name="text">Matricula Repetida</field>
+        </record>
+    </data>
+</tryton>

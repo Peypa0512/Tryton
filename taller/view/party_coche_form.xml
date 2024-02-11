@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page string="Coches" id="coches_list">
+            <field name="coches" colspan="4" widget="one2many"/>
+        </page>
+    </xpath>
+</data>

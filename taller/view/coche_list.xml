@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<tree>
+    <field name="matricula"/>
+    <field name="propietario"/>
+    <field name="marca"/>
+    <field name="modelo"/>
+    <field name="caballos"/>
+    <field name="fecha_imp"/>
+    <field name="precio"/>
+    <field name="fecha_matriculacion"/>
+    <field name="fecha_baja"/>
+</tree>

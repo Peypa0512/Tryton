@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title%}Modelos{% endblock %}
+{% block content %}
+    {% block title2 %}Listado de Modelos {% endblock %}
+    <h3>Estos son los modelos</h3>
+    {% for modelos in mi_modelo %}
+        <a href="{{url_for('compra_coche', modelo=modelos.id)}}">
+        <h2> Modelo de la Marca: {{modelos.rec_name}}</h2>
+        </a>
+    {% endfor %}
+    <br>
+    <h3>Estos son los vehiculos que tenemos</h3>
+    {% for coche in mi_coche: %}
+        <h2>Coche: {{coche.marca.rec_name}}, {{coche.modelo.rec_name}}, {{coche.matricula}}</h2>
+    {% endfor %}
+    {% endblock %}

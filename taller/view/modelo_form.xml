@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<form>
+    <!-- label muestra la etiqueta-->
+    <!-- field muestra el input-->
+    <label name="marca"/>
+    <field name="marca"/> <!--name es el nombre del campo en taller.py-->
+    <label name="modelo"/>
+    <field name="modelo"/> <!--name es el nombre del campo en taller.py-->
+    <label name="precio_mod"/>
+    <field name="precio_mod"/>
+    <label name="fecha_lanz"/>
+    <field name="fecha_lanz"/>
+    <label name="combustible"/>
+    <field name="combustible"/>
+    <label name="caballos"/>
+    <field name="caballos"/>
+</form>

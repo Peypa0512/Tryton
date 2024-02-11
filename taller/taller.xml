@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+
+<tryton>
+    <data>
+        <!-- creamos un grupo para administracion de taller -->
+        <record model="res.group" id="group_taller_admin">
+            <field name="name">Administración taller</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_taller_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_taller_admin"/>
+        </record>
+
+        <!-- creamos otro grupo para taller-->
+        <record model="res.group" id="group_taller">
+            <field name="name">Taller</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_taller">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_taller"/>
+        </record>
+        <!-- creamos un menu de taller y otra de marcas -->
+        <menuitem name="Taller" sequence="3" id="menu_taller"/>
+
+        <!-- creamos las vistas de marca(nombre del modelo de taller.py __name__-->
+        <record model="ir.ui.view" id="marca_view_form">
+            <field name="model">taller.marca</field>
+            <field name="type">form</field>
+            <field name="name">marca_form</field>
+        </record>
+        <record model="ir.ui.view" id="marca_view_list">
+            <field name="model">taller.marca</field>
+            <field name="type">tree</field>
+            <field name="name">marca_list</field>
+        </record>
+
+        <!-- Creamos la acción -->
+        <!-- formulario -->
+        <record model="ir.action.act_window" id="act_marca_form">
+            <field name="name">Marcas</field>
+            <field name="res_model">taller.marca</field>
+        </record>
+        <!--tree-->
+         <record model="ir.action.act_window.view" id="act_marca_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="marca_view_list"/>
+            <field name="act_window" ref="act_marca_form"/>
+        </record>
+        <!--form-->
+         <record model="ir.action.act_window.view" id="act_marca_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="marca_view_form"/>
+            <field name="act_window" ref="act_marca_form"/>
+        </record>
+        <!-- crear la opción de menu de las marcas -->
+        <menuitem parent="menu_taller" action="act_marca_form" sequence="10" id="menu_taller_form"/>
+
+        <!-- creamos menu de los modelos de marca -->
+        <!-- creamos las vistas de modelo(nombre del modelo de taller.py __name__-->
+        <record model="ir.ui.view" id="modelo_view_form">
+            <field name="model">taller.modelo</field>
+            <field name="type">form</field>
+            <field name="name">modelo_form</field>
+        </record>
+        <record model="ir.ui.view" id="modelo_view_list">
+            <field name="model">taller.modelo</field>
+            <field name="type">tree</field>
+            <field name="name">modelo_list</field>
+        </record>
+
+        <!-- Creamos la acción -->
+        <record model="ir.action.act_window" id="act_modelo_form">
+            <field name="name">Modelo</field>
+            <field name="res_model">taller.modelo</field>
+        </record>
+        <!--tree-->
+         <record model="ir.action.act_window.view" id="act_modelo_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="modelo_view_list"/>
+            <field name="act_window" ref="act_modelo_form"/>
+        </record>
+        <!--form-->
+         <record model="ir.action.act_window.view" id="act_modelo_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="modelo_view_form"/>
+            <field name="act_window" ref="act_modelo_form"/>
+        </record>
+        <menuitem parent="menu_taller" action="act_modelo_form" sequence="10" id="menu_modelo_form"/>
+
+        <!-- crear la opción de menu de las coche -->
+        <record model="ir.ui.view" id="coche_view_form">
+            <field name="model">taller.coche</field>
+            <field name="type">form</field>
+            <field name="name">coche_form</field>
+        </record>
+        <record model="ir.ui.view" id="coche_view_list">
+            <field name="model">taller.coche</field>
+            <field name="type">tree</field>
+            <field name="name">coche_list</field>
+        </record>
+
+        <!-- Creamos la acción -->
+        <record model="ir.action.act_window" id="act_coche_form">
+            <field name="name">Coches</field>
+            <field name="res_model">taller.coche</field>
+        </record>
+        <!--tree-->
+         <record model="ir.action.act_window.view" id="act_coche_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="coche_view_list"/>
+            <field name="act_window" ref="act_coche_form"/>
+        </record>
+        <!--form-->
+         <record model="ir.action.act_window.view" id="act_coche_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="coche_view_form"/>
+            <field name="act_window" ref="act_coche_form"/>
+        </record>
+        <menuitem parent="menu_taller" action="act_coche_form" sequence="10" id="menu_coche_form"/>
+
+        <record model="ir.ui.view" id="party_coches_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_coche_form</field>
+        </record>
+
+
+        <record model="ir.ui.view" id="product_model_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">product_modelo_form</field>
+        </record>
+
+        <!--acciones relacionales coche-propietario-->
+        <record model="ir.action.act_window" id="act_coche_teclado">
+            <field name="name">Listado de Propietarios</field>
+            <field name="res_model">taller.coche</field>
+            <field name="domain" pyson="1"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('propietario', '=', Eval('active_id')), ('propietario', 'in', Eval('active_ids')))]"/>
+        </record>
+
+        <!-- accion de teclado -->
+        <record model="ir.action.keyword" id="act_producto_coches_list">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_coche_teclado"/>
+        </record>
+
+        <!--acciones relacionales de coche-producto-->
+        <record model="ir.action.act_window" id="act_teclado_coche_producto">
+            <field name="name">Coche-Producto</field>
+            <field name="res_model">taller.coche</field>
+            <field name="domain" pyson="1"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('modelo.prod_modelo', '=', Eval('active_id')), ('modelo.prod_modelo', 'in', Eval('active_ids')))]"/>
+        </record>
+
+        <!-- accion de teclado -->
+        <record model="ir.action.keyword" id="act_teclado_coches_producto_list">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_teclado_coche_producto"/>
+        </record>
+
+        <!-- las vistas para wizard -->
+        <record model="ir.ui.view" id="baja_coche_start_form">
+            <field name="model">taller.baja_coche.start</field>
+            <field name="type">form</field>
+            <field name="name">coche_baja_start_form</field>
+        </record>
+        <record model="ir.ui.view" id="baja_coche_resultado_form">
+            <field name="model">taller.baja_coche.result</field>
+            <field name="type">form</field>
+            <field name="name">coche_baja_res_form</field>
+        </record>
+        <!-- registro wizard -->
+        <record model="ir.action.wizard" id="act_coche_baja_wizard">
+            <field name="name">Baja Coches</field>
+            <field name="wiz_name">taller.baja_coche</field>
+        </record>
+        <!-- necesitamos hacer este keyword -->
+        <record model="ir.action.keyword" id="act_baja_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">taller.coche,-1</field>
+            <field name="action" ref="act_coche_baja_wizard"/>
+        </record>
+
+        <!-- creacion report -->
+        <record model="ir.action.report" id="report_coche">
+         <field name="name">Report_coche</field>
+         <field name="report_name">ficha_tecnica_del_coche</field>
+         <field name="model">taller.coche</field>
+         <field name="report">taller/report/taller_laParda.odt</field>
+         <field name="template_extension">odt</field>
+      </record>
+        <!-- keyword del report -->
+      <record model="ir.action.keyword" id="report_coche_keyword">
+         <field name="keyword">form_print</field>
+         <field name="model">taller.coche,-1</field>
+         <field name="action" ref="report_coche"/>
+      </record>
+
+      <!-- creamos otro report con excel-->
+      <!-- creacion report -->
+        <record model="ir.action.report" id="report_tabla_coche">
+         <field name="name">Report_tabla_coche</field>
+         <field name="report_name">relacion_tabla_coche</field>
+         <field name="model">taller.coche</field>
+         <field name="report">taller/report/informe_coche.ods</field>
+         <field name="template_extension">ods</field>
+      </record>
+        <!-- keyword del report -->
+      <record model="ir.action.keyword" id="report_coche_tabla_keyword">
+         <field name="keyword">form_print</field>
+         <field name="model">taller.coche,-1</field>
+         <field name="action" ref="report_tabla_coche"/>
+      </record>
+
+
+
+
+
+    </data>
+</tryton>

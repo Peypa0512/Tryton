@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Mis Marcas de Vehiculos{% endblock %}
+{% block content %}
+<br>
+
+{% block title2 %}Lista de Vehiculos {% endblock %}
+
+    <a href="{{url_for('login')}}">
+       <h3>Loguearse para poder hacer compra de un coche</h3>
+    </a>
+    <a href="{{url_for('signup')}}">
+       <h3>Para nuevos usuarios, por favor, pulsa aqui</h3>
+    </a>
+    {% for miMarca in marca %}
+        <a href='{{url_for("lista_modelos", marca_url=miMarca.name)}}'>
+        <h2> Marca de Coche: {{miMarca.name}}</h2>
+        </a>
+    {% endfor %}
+{% endblock %}
+{% block footer %}
+    <h4>Estas son nuestras marcas</h4>
+    {{super()}}
+{% endblock %}

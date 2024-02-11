@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        {% block head %}
+            <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+    </head>
+    <body>
+
+        <div id="content">{% block content %}
+            {% block login %} {% endblock %}
+
+            {% block title2 %}{% endblock %}
+            {% endblock %}</div> <!-- fin bloque content -->
+        <div id="footer">
+            {% block footer %}
+            &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
+            {% endblock %} <!-- fin footer -->
+        </div>
+        <div id="navegador">{% block navegador %} {% endblock %} </div> <!-- fin bloque navegador -->
+    </body>
+</html>

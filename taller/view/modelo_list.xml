@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<tree>
+    <!-- label muestra la etiqueta-->
+    <!-- field muestra el input-->
+    <field name="marca"/> <!--name es el nombre de marca del campo en taller.py-->
+    <field name="modelo"/>
+    <field name="precio_mod"/>
+    <field name="fecha_lanz"/>
+    <field name="combustible"/>
+    <field name="caballos"/>
+    <!--<field name="prod_modelo" colspan='4' /> -->
+</tree>

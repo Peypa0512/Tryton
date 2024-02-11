@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}SIGNUP{% endblock %}
+{% block content %} <!-- bloque content -->
+{% block title2 %}Rellene el formulario{% endblock %}
+<form action="" method="POST">
+    <h3><label>Propietario</label></h3>
+    <h4><input type="text" name="name" required/></h4>
+    <h3><label>Usuario</label></h3>
+    <h4><input type="text" name="username" required/></h4>
+    <h3><label>Contraseña</label></h3>
+    <h4><input type="text" name="password" required/></h4>
+    <h3>
+        <button type="submit" name="button">Enviar</button>
+    </h3>
+</form>
+{% endblock %} <!-- fin bloque content -->
+{% block navegador %}
+<br>
+<br>
+<a href="{{url_for('lista_coches',)}}">
+    <button type="button" name="button">Volver</button>
+</a>
+{% endblock %}
