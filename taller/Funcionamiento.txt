@@ -1,12 +1,47 @@
+Proyecto creado en linux con ubuntu.
+
+App que necesitaremos para el proyecto:
+    - Mercurial:
+    sudo snap install mercurial
+    
+    -cookiecutter:
+    pip  install cookiecutter
+
+Para crear el proyecto en tryton:
+
+    - cookiecutter hg+https://hg.tryton.org/cookiecutter
+
+Con esto creamos el proyecto y el usuario y contraseña de la app de tryton
+
+una vez terminado te genera una carpeta con el código necesario.
+
+Dentro de ella va a aparecer una serie de ficheros en el que está 
+
+	__init__.py
+	tryton.cfg --> para inicializar añadir dependencias si es necesario: product, party, ...
+
 Para entorno virtual:
 
     source venv/bin/activate
 
 Archivo configuración trytond.conf
+    [web]
+	root:(direccion carpeta SAO)
+	[database]
+	uri=postgresql://(bbdd):(contraseña)@localhost:5432/
+
+Importante: tanto tryton como SAO tienen que estar en la misma versión, para verlo en tryton:
+
+    si hacemos trytond --version
+	Como hemos instalado en el 6.0...
+	trytond 6.0.39 --> la versión de SAO deberá ser la 6.0
+
+Instalación SAO: 
+    - https://discuss.tryton.org/t/install-sao-in-a-production-environment/6749
 
 Comandos funcionamiento Tryton
 
-      Actualización modelos app.py:
+      Actualización modelos app.py(cada verz que hagamos un modelo o tabla):
 
         - pip install -e .
 
